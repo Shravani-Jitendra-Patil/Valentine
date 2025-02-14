@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaishali ❤️ Jitendra - Valentine's Special</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+            text-align: center;
+            overflow-x: hidden;
+            min-height: 200vh;
+            position: relative;
+        }
+        h1 {
+            color: white;
+            font-size: 4rem;
+            padding-top: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.6); }
+            to { text-shadow: 6px 6px 12px rgba(255, 255, 255, 1); }
+        }
+        .love-quote {
+            color: white;
+            font-size: 1.8rem;
+            margin: 20px;
+            font-style: italic;
+            animation: fadeIn 3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            position: relative;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .couple-img {
+            width: 500px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .couple-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .valentine-message {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            position: relative;
+            pointer-events: none; /* Prevents it from being clicked */
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: fall 3s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .glitter {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+        @keyframes sparkle {
+            0% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0.5; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Vaishali ❤️ Jitendra</h1>
+    <p class="love-quote">"Every love story is beautiful, but yours is my favorite. 💕"</p>
+    <div class="container">
+        <img src="VJ.jpg" class="couple-img" id="toggleHearts">
+        <p class="valentine-message">Happy Valentine's Day Mummy & Pappa ❤️</p>
+    </div>
+    
+    <script>
+        let falling = false;
+        let interval;
+        const image = document.getElementById('toggleHearts');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        function createGlitter() {
+            const glitter = document.createElement('div');
+            glitter.classList.add('glitter');
+            glitter.style.left = Math.random() * 100 + 'vw';
+            glitter.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(glitter);
+
+            setTimeout(() => {
+                glitter.remove();
+            }, 3000);
+        }
+
+        setInterval(createGlitter, 500);
+
+        image.addEventListener('click', () => {
+            if (!falling) {
+                interval = setInterval(createHeart, 200);
+            } else {
+                clearInterval(interval);
+            }
+            falling = !falling;
+        });
+    </script>
+</body>
+</html>
